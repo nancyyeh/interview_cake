@@ -1,0 +1,17 @@
+""" Write a function that takes a list of characters and reverses the letters in place. 
+
+    >>> reverse_in_place(['a', 'b', 'c', 'd', 'e'])
+    ['e', 'd', 'c', 'b', 'a']
+"""
+
+
+def reverse_in_place(list_chars):
+    for i in range(len(list_chars) // 2):
+        list_chars[i], list_chars[-1-i] = list_chars[-1-i], list_chars[i]
+    return list_chars
+
+
+if __name__ == '__main__':
+    import doctest
+    if doctest.testmod().failed == 0:
+        print('\n **PASSED** \n')

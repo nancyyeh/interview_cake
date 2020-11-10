@@ -1,0 +1,26 @@
+""" Write a function that takes a list of characters and reverses the letters in place. 
+
+    >>> fcfs([1], [2, 4, 6], [2, 1, 6, 4])
+    False
+"""
+
+
+def fcfs(take_out, dine_in, served):
+    dict_served = {}
+    for i, order in enumerate(served):
+        dict_served[order] = i
+    if len(take_out) > 1:
+        for i in range(1, len(take_out)):
+            if dict_served[take_out[i-1]] > dict_served[take_out[i]]:
+                return False
+    if len(dine_in) > 1:
+        for i in range(1, len(dine_in)):
+            if dict_served[dine_in[i-1]] > dict_served[dine_in[i]]:
+                return False
+    return True
+
+
+if __name__ == '__main__':
+    import doctest
+    if doctest.testmod().failed == 0:
+        print('\n **PASSED** \n')
